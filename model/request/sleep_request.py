@@ -38,3 +38,25 @@ class SleepRequest:
             room_temperature_f=data['room_temperature_f'],
             ambient_noise_db=data['ambient_noise_db'],
         )
+
+
+    @staticmethod
+    def is_valid(data: dict) -> bool:
+        """Valida se os dados fornecidos contêm todos os campos necessários."""
+        required_fields = {
+            "age",
+            "gender",
+            "chronotype",
+            "occupation",
+            "bedtime_hour",
+            "screen_time_before_bed_min",
+            "primary_app_category",
+            "screen_brightness_pct",
+            "blue_light_filter_on",
+            "caffeine_intake_mg",
+            "caffeine_last_hour",
+            "physical_activity_min",
+            "room_temperature_f",
+            "ambient_noise_db",
+        }
+        return required_fields.issubset(data.keys())
