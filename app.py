@@ -16,7 +16,7 @@ def create_app(config_override=None):
         app.config.update(config_override)
 
     CORS(app)
-    init_db(app)
+    # init_db(app)
 
     model_available = sleep_prediction_service.ensure_model_available()
     app.extensions["sleep_prediction_service"] = sleep_prediction_service
