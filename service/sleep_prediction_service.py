@@ -48,7 +48,7 @@ class SleepPredictionService:
     def _load_model(self):
             if self._model is None:
                 if not self.model_path.is_file():
-                    self._ensure_model_available()
+                    self.ensure_model_available()
                 if not self.model_path.is_file():
                     raise FileNotFoundError(
                         f"Modelo treinado não encontrado em '{self.model_path}'. "
@@ -57,7 +57,7 @@ class SleepPredictionService:
                 self._model = joblib.load(self.model_path)
             return self._model
 
-    def _ensure_model_available(self) -> bool:
+    def ensure_model_available(self) -> bool:
             """Garante o arquivo local; baixa quando ausente e há URL configurada."""
             if self.model_path.is_file():
                 return True
